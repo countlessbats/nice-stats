@@ -1,0 +1,10 @@
+bin/
+obj/
+release/
+staging/
+*.dll
+*.pdb
+*.zip
+*.patched
+Assembly-CSharp*.dll*
+Decompiled/
