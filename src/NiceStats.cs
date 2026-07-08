@@ -13,11 +13,15 @@ namespace LoomNiceStats
         private const string AbilityName = "Loom_Nice_Stats_Modal";
         private const int NiceNumber = 69;
         private const int NiceAttributeCap = 99;
+        internal const string TooltipText =
+            "A calm, peer-reviewed certainty settles over the party. All skills become 69 while this modal is active.";
 
         private static UICharacterCreationManager s_seenCreationManager;
         private static int s_originalPointBuy;
         private static int s_originalStatHardMaximum;
         private static bool s_hasOriginalCharacterCreationValues;
+        private static Texture2D s_icon;
+        private static bool s_iconLoaded;
         private static readonly Dictionary<CharacterStats, int[]> s_appliedSkillBonuses =
             new Dictionary<CharacterStats, int[]>();
 
@@ -149,6 +153,7 @@ namespace LoomNiceStats
         private static void ConfigureAbility(GenericAbility ability, GameObject owner)
         {
             ability.OverrideName = "Nice Stats";
+            ability.Icon = GetIcon();
             ability.Owner = owner;
             ability.Cooldown = 0f;
             ability.CooldownType = GenericAbility.CooldownMode.None;
@@ -163,6 +168,65 @@ namespace LoomNiceStats
             ability.DurationOverride = 0f;
             ability.AppliedViaMod = true;
             ability.IsVisibleOnUI = true;
+        }
+
+        private static Texture2D GetIcon()
+        {
+            if (s_iconLoaded)
+            {
+                return s_icon;
+            }
+
+            s_iconLoaded = true;
+            string[] candidates = new string[]
+            {
+                "Inspiring_Radiance",
+                "Second_Wind",
+                "Field_Triage",
+                "Bonus_1st_Level_Spell",
+                "Fast_Runner"
+            };
+
+            for (int i = 0; i < candidates.Length; i++)
+            {
+                Texture2D icon = LoadAbilityIcon(candidates[i]);
+                if (icon != null)
+                {
+                    s_icon = icon;
+                    break;
+                }
+            }
+
+            return s_icon;
+        }
+
+        private static Texture2D LoadAbilityIcon(string prefabName)
+        {
+            try
+            {
+                GameObject prefab = GameResources.LoadPrefab<GameObject>(prefabName, false);
+                if (prefab == null)
+                {
+                    return null;
+                }
+
+                GenericAbility ability = prefab.GetComponent<GenericAbility>();
+                if (ability != null && ability.Icon != null)
+                {
+                    return ability.Icon;
+                }
+
+                GenericTalent talent = prefab.GetComponent<GenericTalent>();
+                if (talent != null && talent.Icon != null)
+                {
+                    return talent.Icon;
+                }
+            }
+            catch
+            {
+            }
+
+            return null;
         }
 
         private static void ApplyNiceSkills(CharacterStats stats)
@@ -267,11 +331,21 @@ namespace LoomNiceStats
 
     public class NiceStatsAbility : GenericAbility
     {
+        public new string GetTooltipContent(GameObject owner)
+        {
+            return Bootstrap.TooltipText;
+        }
+
+        public new Texture GetTooltipIcon()
+        {
+            return Icon;
+        }
+
         protected override void ReportActivation(bool overridePassive)
         {
             try
             {
-                Console.AddMessage("Nice Stats: all skills are now 69. This is scholarship.", Color.magenta);
+                Console.AddMessage("Nice Stats: all skills are now 69. The committee is impressed.", Color.magenta);
             }
             catch
             {

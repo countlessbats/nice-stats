@@ -9,12 +9,13 @@ A tiny Pillars of Eternity 1 sidecar mod for people who looked at balanced progr
 - Character creation raises the attribute cap to **99** while allocating those points.
 - Every primary party member gets a **Nice Stats** modal.
 - The modal uses `ActivationGroup.None`, so it is designed to stack with normal modal abilities.
+- The modal uses a vanilla ability icon picked from a small nice-sounding candidate list.
 - While active, the modal applies temporary bonuses so Stealth, Athletics, Lore, Mechanics,
   Survival, and Crafting calculate to **69**.
 - Turning the modal off removes only its own temporary bonuses.
 
-The in-game activation message is the tooltip's spiritual understudy:
-`Nice Stats: all skills are now 69. This is scholarship.`
+Tooltip:
+`A calm, peer-reviewed certainty settles over the party. All skills become 69 while this modal is active.`
 
 ## Installation
 
