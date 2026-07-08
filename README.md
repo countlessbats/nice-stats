@@ -6,6 +6,7 @@ A tiny Pillars of Eternity 1 sidecar mod for people who looked at balanced progr
 ## Features
 
 - Character creation gives new player characters and hired adventurers **69 attribute points**.
+- Character creation raises the attribute cap to **99** while allocating those points.
 - Every primary party member gets a **Nice Stats** modal.
 - The modal uses `ActivationGroup.None`, so it is designed to stack with normal modal abilities.
 - While active, the modal applies temporary bonuses so Stealth, Athletics, Lore, Mechanics,

@@ -12,10 +12,12 @@ namespace LoomNiceStats
     {
         private const string AbilityName = "Loom_Nice_Stats_Modal";
         private const int NiceNumber = 69;
+        private const int NiceAttributeCap = 99;
 
         private static UICharacterCreationManager s_seenCreationManager;
         private static int s_originalPointBuy;
-        private static bool s_hasOriginalPointBuy;
+        private static int s_originalStatHardMaximum;
+        private static bool s_hasOriginalCharacterCreationValues;
         private static readonly Dictionary<CharacterStats, int[]> s_appliedSkillBonuses =
             new Dictionary<CharacterStats, int[]>();
 
@@ -82,13 +84,15 @@ namespace LoomNiceStats
                 RestorePointBuy();
                 s_seenCreationManager = manager;
                 s_originalPointBuy = manager.TotalPointBuy;
-                s_hasOriginalPointBuy = true;
+                s_originalStatHardMaximum = manager.StatHardMaximum;
+                s_hasOriginalCharacterCreationValues = true;
             }
 
             if (manager.CreationType == UICharacterCreationManager.CharacterCreationType.NewPlayer
                 || manager.CreationType == UICharacterCreationManager.CharacterCreationType.NewCompanion)
             {
                 manager.TotalPointBuy = NiceNumber;
+                manager.StatHardMaximum = NiceAttributeCap;
             }
             else
             {
@@ -98,13 +102,15 @@ namespace LoomNiceStats
 
         private static void RestorePointBuy()
         {
-            if (s_seenCreationManager != null && s_hasOriginalPointBuy)
+            if (s_seenCreationManager != null && s_hasOriginalCharacterCreationValues)
             {
                 s_seenCreationManager.TotalPointBuy = s_originalPointBuy;
+                s_seenCreationManager.StatHardMaximum = s_originalStatHardMaximum;
             }
             s_seenCreationManager = null;
             s_originalPointBuy = 0;
-            s_hasOriginalPointBuy = false;
+            s_originalStatHardMaximum = 0;
+            s_hasOriginalCharacterCreationValues = false;
         }
 
         private static GenericAbility EnsureModal(CharacterStats stats)
