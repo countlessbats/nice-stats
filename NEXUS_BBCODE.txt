@@ -1,0 +1,66 @@
+[center][size=5][b]Nice Stats[/b][/size]
+Nice Stats is a tiny Pillars of Eternity 1 sidecar mod for people who looked at balanced progression and asked: what if the number were funnier?[/center]
+
+[size=4][b]What It Does[/b][/size]
+[list]
+[*]During character creation, new player characters and hired adventurers get [b]69 attribute points[/b].
+[*]During character creation, the attribute cap is raised to [b]99[/b].
+[*]Every primary party member gets a [b]Nice Stats[/b] modal ability.
+[*]The modal stacks with normal modal abilities.
+[*]While active, Stealth, Athletics, Lore, Mechanics, Survival, and Crafting calculate to [b]69[/b].
+[*]Turning the modal off removes only its own temporary bonuses.
+[/list]
+
+Tooltip text:
+[quote]A calm, peer-reviewed certainty settles over the party. All skills become 69 while this modal is active.[/quote]
+
+[size=4][b]Installation[/b][/size]
+[list=1]
+[*]Download the release zip.
+[*]Extract the zip somewhere convenient.
+[*]Close Pillars of Eternity if it is running.
+[*]Double-click [b]install.bat[/b].
+[*]Approve the Windows administrator prompt if it appears.
+[*]If the installer finds your game automatically, it will install immediately.
+[*]If it cannot find the game automatically, paste your Pillars of Eternity install folder when prompted.
+[/list]
+
+The install folder is the folder that contains [b]PillarsOfEternity.exe[/b] and [b]PillarsOfEternity_Data[/b].
+
+Examples:
+[code]
+C:\Program Files (x86)\Steam\steamapps\common\Pillars of Eternity
+D:\SteamLibrary\steamapps\common\Pillars of Eternity
+E:\Games\Steam Library (RPGs)\steamapps\common\Pillars of Eternity
+[/code]
+
+At the installer prompt, quotes are optional. Paths with spaces and parentheses are OK, so this works:
+[code]
+C:\Program Files (x86)\Steam\steamapps\common\Pillars of Eternity
+[/code]
+
+You can also paste a path to [b]PillarsOfEternity.exe[/b], [b]PillarsOfEternity_Data[/b], [b]Managed[/b], or [b]Assembly-CSharp.dll[/b]; the installer will walk up to the correct game folder.
+
+[size=4][b]Uninstall[/b][/size]
+[list=1]
+[*]Go to your game folder.
+[*]Open [b]PillarsOfEternity_Data\Managed[/b].
+[*]Restore [b]Assembly-CSharp.dll.nicestats-backup[/b] over [b]Assembly-CSharp.dll[/b].
+[*]Delete [b]LoomNiceStats.dll[/b].
+[/list]
+
+Steam's "Verify integrity of game files" can also restore the original game assembly.
+
+[size=4][b]Compatibility[/b][/size]
+[list]
+[*]Windows only.
+[*]Requires Pillars of Eternity 1.
+[*]Works by adding one sidecar DLL hook to [b]Assembly-CSharp.dll[/b].
+[*]The installer is idempotent; re-running it will not add duplicate hooks.
+[*]Close the game before installing.
+[/list]
+
+[size=4][b]Source / License[/b][/size]
+Nice Stats is open source under the MIT license.
+
+[url=https://github.com/countlessbats/nice-stats]Source code on GitHub[/url]

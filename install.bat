@@ -7,7 +7,8 @@ rem  Modifies the game's Assembly-CSharp.dll, so it asks for administrator
 rem  rights (game files are often under Program Files).
 rem
 rem  You can also pass a game path:  install.bat -GameDir "D:\Games\Pillars of Eternity"
-rem  With no arguments it auto-detects a Steam install.
+rem  With no arguments it auto-detects a Steam install, then prompts if it cannot find one.
+rem  At the prompt, quotes are optional; paths with spaces and parentheses are OK.
 rem ============================================================================
 
 rem --- Re-launch elevated if we are not already running as administrator ---
@@ -35,6 +36,7 @@ if "%NS_EXIT%"=="0" (
 ) else (
     echo Something went wrong ^(exit code %NS_EXIT%^). See the messages above.
     echo Make sure the game is closed and the folder is correct, then try again.
+    echo If auto-detect failed, paste the folder that contains PillarsOfEternity.exe.
 )
 echo.
 pause

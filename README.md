@@ -20,7 +20,15 @@ Tooltip:
 ## Installation
 
 Close the game, then run `install.bat`. If the installer cannot find the game automatically, paste
-the Pillars of Eternity install location when prompted.
+the Pillars of Eternity install location when prompted. Quotes are optional in the prompt; paths
+with spaces and parentheses work, for example:
+
+`C:\Program Files (x86)\Steam\steamapps\common\Pillars of Eternity`
+
+## Source
+
+Nice Stats is open source under the MIT license:
+https://github.com/countlessbats/nice-stats
 
 ## Internal Name
 
